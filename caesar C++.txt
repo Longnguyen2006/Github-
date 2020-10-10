@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <conio.h>
+#include <string.h>
+#include <stdlib.h>
+#define SIZE 100
+int Mahoa_Ceaser(char *Str_Nguon,char *Str_Mahoa,int len,int key); 
+//Инициализировать шифрование caesar
+int Giaima_Ceaser(char Str_Nguon[],char Str_Giaima[],int len,int key);
+// Инициализировать расшифровку caesar
+int khoitao(char Str[]);
+int main()
+{
+ char Str[SIZE],Str_Mahoa[SIZE],Str_Giaima[SIZE];
+ int len,key;
+ printf("Enter the string: ");
+ //flushall();
+ gets(Str);
+ printf("Enter the number of hops: ");
+ scanf("%d",&key);
+ len=strlen(Str);
+ khoitao(Str_Mahoa);
+ khoitao(Str_Giaima);
+ Mahoa_Ceaser(Str,Str_Mahoa,len,key);
+ Giaima_Ceaser(Str,Str_Giaima,len,key);
+ printf("The encoded string is: %s\n",Str,Str_Mahoa);
+ printf("The solved string is: %s\n",Str,Str_Giaima);
+ getch();
+}
+int Mahoa_Ceaser(char Str_Nguon[],char Str_Mahoa[],int len,int key)
+{
+ for (int i=0;i<len;i++)
+ {
+  char c=Str_Nguon[i];
+  if(c>='A' && c<='Z')
+   Str_Mahoa[i]=(Str_Nguon[i]-'A'+key)%26 +'A';
+  else if(c>='a' && c<='z')
+   Str_Mahoa[i]=(Str_Nguon[i]-'a'+key)%26+'a';
+  else Str_Mahoa[i]=Str_Nguon[i];
+ }
+ return 0;
+}
+int khoitao(char Str[])
+{
+ for(int i=0;i<SIZE;i++)
+  Str[i]=0;
+ return 0;
+}
+int Giaima_Ceaser(char Str_Nguon[],char Str_Giaima[],int len,int key)
+{
+ for (int i=0;i<len;i++)
+ {
+  char c=Str_Nguon[i];
+  if(c>='A' && c<='Z')
+   Str_Giaima[i]=(abs(Str_Nguon[i]-'A'-key))%26 +'A';
+  else if(c>='a' && c<='z')
+   Str_Giaima[i]=(abs(Str_Nguon[i]-'a'-key))%26+'a';
+  else Str_Giaima[i]=Str_Nguon[i];
+ }
+ return 0;
+}
